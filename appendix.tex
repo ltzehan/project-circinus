@@ -1,0 +1,104 @@
+\appendix
+
+\section{More things about time}
+\label{app:timesystems}
+
+\subsection{Disambiguation}
+
+Colloquially, GMT can refer to either Universal Time (UT) or Coordinated Universal Time (UTC), which are entirely different in concept. This is a matter of loose definitions and even looser morals. UTC is based on atomic clocks, but due to manual corrections the difference is typically $<1^\mathrm{s}$.
+
+Even when speaking of UT, it is an umbrella term referring to several standards. In common parlance, UT refers specifically to UT1, the successor to the older UT0 standard. Although they are both based on the mean solar time, it is terribly difficult to measure the Sun precisely. Instead, it is maintained by an assortment of measurements on satellites, the Moon and even quasars.
+
+We can also note a distinction between UT and GMT should we argue semantics. They are used interchangeably, but GMT is a time \textit{zone}, while UT is a time \textit{standard}. Although we have used UT throughout these notes, GMT is actually based on UTC. Given the current time in UTC, you could calculate the time in UTC for a star to culminate. It would, however, be a conceptual faux pas to read a UTC time off a sundial, or when doing any calculations with the position of the Sun. For brevity and to spare you from the confusion, UTC is not used at all in these notes. 
+
+\section{Derivations}
+\label{app:derivations}
+
+\subsection{Cotangent four-part formula}
+In the event that you can't remember the formula, you can derive it from the other two spherical trigonometric laws. If you can't remember those either, then I wish you all the best.
+
+The cotangent four-part formula is useful when specifically looking at 4 consecutive angles and sides, where we only have quantities of any 3 parts. The proof is also much cleaner when we take this into account.
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \coordinate (A) at (0.7, 1.7);
+        \coordinate (B) at (-1.2, 1.2);
+        \coordinate (C) at (-0.3, -1.8);
+        \draw (A) to[bend right] (B);
+        \draw ([shift=(47:0.5)]C) arc (47:80:0.5) node[black,pos=0.5,above right=1pt and -4pt] {$B$};
+        \draw ([shift=(170:0.3)]A) arc (170:280:0.3) node[black,pos=0.5,below left=-3pt] {$A$};
+        \draw (B) to[bend left=30] (C) node[black,pos=0.5,left=13pt] {$a$};
+        \draw (A) to[bend left=30] (C) node[black,pos=0.5,right=22pt] {$c$};
+    \end{tikzpicture}
+\end{figure}
+
+Without loss of generality, let us assume we are dealing with the variables shown above. Using the two angles with their cosine laws:
+\begin{gather}
+    \cos a = \cos b \cos c + \sin b \sin c \cos A \\
+    \cos b = \cos a \cos c + \sin a \sin c \cos B
+\end{gather}
+
+The variable $b$ is not in the final expression, so it can be substituted away to yield
+\begin{equation}
+    \cos a = \cos a \cos^2 c + \sin a \sin c \cos c \cos B + \cos A \,\frac{\sin B}{\sin A}\, \sin c 
+\end{equation}
+
+Simplifying and rearranging,
+\begin{align}
+\begin{split}
+    \cos c \cos B + \cot A \sin B &= \frac{\cot a}{\sin c} \left( 1 - \cos^2 c \right) \\
+    &= \cot a \sin c
+\end{split}
+\end{align}
+
+The variables used here are for a generic spherical triangle. It can be converted to the form shown in Eqn.\,\ref{eqn:cotangent_four_part} using the substitutions:
+\begin{equation*}
+    \begin{split}
+        A &\rightarrow \theta_o \\ 
+        B &\rightarrow \theta_i
+    \end{split}
+    \qquad
+    \begin{split}
+        a &\rightarrow l_o \\
+        c &\rightarrow l_i
+    \end{split}
+\end{equation*}
+
+% TODO: spherical trickery
+% declination from spherical triangle to sine curve
+% draw right spherical triangle -> sine rule -> arcsin(sin wt sin e) \approx e sin wt
+% rmb e should be in rad
+
+% \section{Cool stuff}
+% \subsection{Duals}
+% \label{app:duals}
+% In physics and mathematics, there is a very useful concept called a \textit{dual}. Say you have a mathematical object or concept, or generally a \textit{thing}, then $X*$ is the dual of $X$
+% \begin{equation}
+%     X^* = \mathcal{D}\{X\}
+% \end{equation}
+% such that the dual of the dual is the original \textit{thing} itself 
+% \begin{equation}
+%     \mathcal{D}\{X^*\} = (\mathcal{D}\circ\mathcal{D})\{X\} = X
+% \end{equation}
+% The dual is incredibly useful in parts of math and physics, as it is essentially the same \textit{thing} but viewed from another angle. As an illustration, say you have two sets $A$ and $B$:
+% \begin{figure}[h!]
+%     \centering
+%     \begin{tikzpicture}
+%         \draw (-0.75,0) circle (1.25) node[left=10pt] {$A$};
+%         \draw (0.75,0) circle (1.25) node[right=10pt] {$B$};
+%         \draw (-2.5, -1.75) -- (2.5, -1.75) -- (2.5, 1.75) -- (-2.5, 1.75) -- cycle node[left=3pt,pos=0.3] {$\xi$}; 
+%     \end{tikzpicture}
+% \end{figure}
+
+% Let's say that you have a statement $S$ about these two sets, then its dual can be obtained by substituting in $S$: $\cap\rightarrow\cup$, $\cup\rightarrow\cap$, $\varnothing\rightarrow\xi$ and $\xi\rightarrow\varnothing$. For example:
+% \begin{equation}
+%     S\colon\, (A \cap B) \cup (A \cap \overline{B}) = A \quad \xrightarrow{\mathcal{\ D\ }} \quad S^*\colon\, (A \cup B) \cap (A \cup \overline{B}) = A
+% \end{equation}
+% \begin{equation}
+%     S\colon\, (A \cap B) \cap (A \cap \overline{B}) = \varnothing \quad \xrightarrow{\mathcal{\ D\ }} \quad S^*\colon\, (A \cup B) \cup (A \cup \overline{B}) = \xi
+% \end{equation}
+
+% Of course the idea of a dual is more nuanced, but it's very complicated to explain such a general concept. As long as you get the vibe it's alright. You don't really need to understand this to use polar triangles.
+
+%% something for counting days in a month
+%% higher order effects (precession of the equinoxes/ earth's axis, nutation)

@@ -1,0 +1,94 @@
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Project Circinus v1.2.4},
+pdfsubject={Spherical trigonometry, and a whole load of baloney},
+pdfauthor={qihao}
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=0.75in, footnotesep=0.25in]{geometry}
+\usepackage[bottom]{footmisc}
+
+\usepackage{xifthen}
+
+\usepackage{parskip}
+\usepackage{varwidth}
+\usepackage{exercise}
+\usepackage{enumitem}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usetikzlibrary{positioning,angles,calc,quotes,intersections,decorations.text,arrows,pgfplots.fillbetween}
+
+\linespread{1.05}
+
+%% 
+%%  Exercise customization
+%%
+\renewcommand{\ExerciseHeader}{%
+    \textbf{\ExerciseName\ \ExerciseHeaderNB\ ---}%
+}%
+\renewcommand{\AnswerHeader}{%
+    \smallskip\textbf{Solution: }%
+}%
+\renewcommand{\ExerciseListHeader}{%
+    \textbf{\ExerciseName\ \ExerciseHeaderNB\ --- }%
+}%
+
+%%
+%%  Angle formatting commands
+%%
+\newcommand{\degree}{{}^{\circ}}
+\newcommand{\sexg}[3]{%
+    \ifthenelse{\isempty{#2}}%
+        {{#1}\degree}%
+        {\ifthenelse{\isempty{#3}}%
+            {{#1}\degree {#2}'}%
+            {{#1}\degree {#2}' {#3}''}%
+        }%
+}%
+\newcommand{\hms}[3]{%
+    \ifthenelse{\isempty{#2}}%
+        {{#1}^{\mathrm{h}}}%
+        {\ifthenelse{\isempty{#3}}%
+            {{#1}^{\mathrm{h}} {#2}^{\mathrm{m}}}%
+            {{#1}^{\mathrm{h}} {#2}^{\mathrm{m}} {#3}^{\mathrm{s}}}%
+        }%
+}%
+\newcommand{\h}{{}^\mathrm{h}}
+\newcommand{\RA}{\mathrm{RA}}
+\newcommand{\HA}{\mathrm{HA}}
+\newcommand{\EOT}{\mathrm{EOT}}
+
+%%
+%%  Layout commands
+%%  
+\newcommand{\flipanswer}[1]{\rotatebox[origin=c]{180}{\footnotesize #1}}
+
+\setlength{\fboxsep}{0.75em}
+\setlength{\fboxrule}{0.75pt}
+\newcommand{\boxedtext}[1]{%
+    \smallskip%
+    \fbox{\begin{varwidth}{\textwidth}{#1}\end{varwidth}}%
+    \smallskip%
+}
+\newcommand{\smallboxedtext}[1]{%
+    \smallskip%
+    \begin{center}\framebox{$\quad${#1}$\quad$}\end{center}%
+    \smallskip%
+}
+\newcommand{\crule}{%
+    \smallskip%
+    \begin{center}\noindent\rule{0.5\textwidth}{0.4pt}\end{center}%
+    \smallskip%
+}
+
+%%
+%%  Counters
+%%
+\numberwithin{equation}{section}
